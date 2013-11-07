@@ -1,32 +1,35 @@
 # Have You Seen Spring Lately?
 
-It can be a dizzying task to keep up with today's technologies, but Spring has your back. Today, developers are being asked to handle more challenges then ever, and to do so more quickly.
+Today, developers are being asked to handle more challenges then ever, and to do so more quickly. It can be a dizzying task to keep up with today's technologies, but Spring has your back. 
 
-In this article we'll look at the latest and greatest Spring projects and their place in the Spring IO platform.
+In this article we'll look at the latest and greatest Spring projects and their place in the _Spring IO_ platform.
 
 ![the Spring IO platform](./imgs/spring-io-platform.jpg "the Spring IO platform")
 
-The basic idea is that developers will use one of the three channels at the _IO Execution_ tier to start using Spring: [**Spring XD**](http://spring.io/projects/spring-xd) for big-data, batch and integration work, [**Spring Boot**](http://projects.spring.io/spring-boot/) for convention-over-configuration Spring application development, and [**Grails**](http://grails.org/) for rapid web application development with the Groovy language.
+While you can pick up any library and use it _a la carte_, we hope that developers will enter the platform through one of the three channels at the _IO Execution_ tier: 
 
-From there, the developer may expect to use any of the Spring modules in the _IO Foundation_ box supporting integration, batch processing, big data, and web applications, all of which of course work with our data-access and processing APIs and enjoy the support of cross-cutting technologies like the core dependency injection container, and the Spring Security project.
+* [**Spring XD**](http://spring.io/projects/spring-xd) for big-data, batch and integration work 
+* [**Spring Boot**](http://projects.spring.io/spring-boot/) for convention-over-configuration-centric and singularity-of-focus-centric Spring application development.
+* [**Grails**](http://grails.org/) for rapid web application development with the Groovy language.
+
+From there, a developer may expect to use 	any of the Spring modules in the _IO Foundation_ box supporting integration, batch processing, big data, and web applications, all of which work with our data-access and processing APIs and enjoy the support of cross-cutting technologies like the core dependency injection container, the reactive [_Reactor_](http://github.com/reactor) framework, and  the [Spring Security](http://spring.io/projects/spring-security) project.
 
 
 ## A New Beginning for Spring and For You
 
 ### Spring Has a New Home!
-Spring's got a new home at [spring.io](http://spring.io). spring.io is your one-stop shop for much easier access to [documentation](https://spring.io/docs), the [forums](http://forum.spring.io/), the [blog](https://spring.io/blog), detailed [project information](https://spring.io/projects), and new [getting-started guides](http://spring.io/guides) and tutorials.
+Spring's new home on the web is [http://spring.io](http://spring.io). Spring.io is your one-stop shop for [documentation](https://spring.io/docs), the [forums](http://forum.spring.io/), the [blog](https://spring.io/blog), detailed [project information](https://spring.io/projects), and new [getting-started guides](http://spring.io/guides) and tutorials.
 
 ### "How Do I Get Started, Quickly?"
-It's a question we on the [Spring team](http://spring.io/team)  get a lot. We're focusing on a two-pronged approach: better guidance and education and more productive-by-default tools.
+We've worked hard on the [Spring team](http://spring.io/team) to answer the question: "how do I get started, quickly?" We've developed a two-pronged solution: better guidance / education and productive-by-default tools.
 
-#### More Guidance from the Source
-
-Spring's always had a good documentation story. Spring's always given away the source code and documentation, even when everyone else was selling it. Spring itself was initially the example code given in the pages of a book attempting to describe a better way forward. That way forward has taken us further and further from those initial few steps as Spring has grown to embrace and support new technologies. It can be easy to forget what they looked like. So, we revisited our getting started experience. We've created task-focused [getting-started guides](http://spring.io/guides) that explain how to achieve a given task in a short tutorial that you should be able to work through in a lunchtime. Each guide starts with a working code base against which you may check your work, and a _blank_, starter codebase to levelset and start fresh. So, suppose you've heard about [REST](http://en.wikipedia.org/wiki/Representational-state-transfer) and want to incorporate it in your application: just check out the _Building a RESTful Web Service_ guide, written by experts on the Spring team. If you just want to skip to the punchline, you'll get working code you can use. For the details, just follow along with the guide!
+#### (More) Guidance from the Source
+Spring's always had a good documentation story. Spring's always given away the source code and documentation, even when everyone else was selling it. Spring itself was initially the _example code_ given in the pages of a *book* that prescribed a better way forward for enterprise Java. That way forward has taken us further and further from those initial few steps as Spring has raced to meet the ever-moving horizons of technology. It can be easy to forget what those first few steps looked like. We have revisited our "getting started" experience and created the task-focused [getting-started guides](http://spring.io/guides) that explain how to achieve a task in a short text that you should be able to work through in a lunchtime (or less!). Each guide starts with a finished, working code base against which you may check your work, and a _blank_, starter codebase to levelset and start fresh. Suppose you've heard about [REST](http://en.wikipedia.org/wiki/Representational-state-transfer) and want to incorporate it in your application; just check out the [_Building a RESTful Web Service_](https://spring.io/guides/gs/rest-service/) guide, written by experts on the Spring team. If you like, you can skip to the punchline, and you'll get working code you can use. For a richer narrative, just follow along with the guide!
 
 #### Bootstrap Your Productivity with Spring Boot!
-Whenever possible, these guides are written using [Spring Boot](http://spring.io/projects/spring-boot). Spring Boot makes it easy to create stand-alone, production-grade Spring-based applications that can you can "just run". Spring Boot takes an opinionated, convention-over-configuration view of the Spring platform and third-party libraries so you can get started with minimum fuss.
+Whenever possible, these guides are written using [Spring Boot](http://spring.io/projects/spring-boot). Spring Boot makes it easy to create stand-alone, production-grade Spring-based applications that can you can "just run." Spring Boot takes an opinionated, convention-over-configuration view of the Spring platform and third-party libraries so you can get started with minimum fuss. It focuses attention on your application and away from the conceptual overhead.
 
-For a very quick getting started experience with Spring Boot, [install the `spring` command line tool](http://projects.spring.io/spring-boot/docs/README.html), and then put the following into a file named `service.groovy`:
+Want to try it? [Install the `spring` command line tool](http://projects.spring.io/spring-boot/docs/README.html) (you can use [GVM](http://gvmtool.net/), or [Homebrew on OSX](http://brew.sh/), or simply build the code), and then put the following into a file named `service.groovy`:
 
 ```
 @Grab("spring-boot-starter-actuator")
@@ -41,12 +44,11 @@ class Example {
 
 ```
 
-This is a Groovy-language Spring MVC REST controller that simply returns an object with a property, `message`. On the command line, run `spring run service.groovy` and it will start up and give you a working REST endpoint which you can hit from any browser at [`http://127.0.0.1:8080/`](http://127.0.0.1:8080).
+This is a Groovy-language Spring MVC REST controller that simply returns an object with a property, `message`. On the command line, run `spring run service.groovy` and it will start up and give you a working REST endpoint which you can hit from any browser at [`http://127.0.0.1:8080/`](http://127.0.0.1:8080). The `@Grab` annotation tells Groovy to pull down a Java dependency (as you might do with Maven or Gradle, for example) that the Spring Boot project provides complete with all the libraries you're likely to need for a given task.
 
 ![Running a Groovy-language service from the spring command line tool](imgs/running-rest-service.png "the Spring IO platform")
 
-
-#### Bootstrapping Your Development with our Eclipse-Based Spring and Groovy Tool Suites
+#### Bootstrapping Your Development with our open-source and Eclipse-Based Spring Tool Suite and Groovy Tool Suite
 If you're a Java developer working in Eclipse then check out our open-source [Spring Tool Suite](http://spring.io/tools/sts) and [Groovy/Grails Tool Suite](http://spring.io/tools/ggts) distributions. They layer on top of an existing instance of the latest-and-greatest Eclipse distribution or you can download them as separate IDEs. I think this last approach is the far more productive path, and, if you want anything else, just add it!
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/LSNiI9zSn6M" frameborder="0" allowfullscreen></iframe>
@@ -68,11 +70,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
-    // Arguably, this isn't very RESTful although I'm struggling for a better equally-concise example
+	public static class Greeting { 
+		private String message; 
 
+		public Greeting(String msg){
+		  this.message = msg;
+		}
+		public String getMessage(){
+		  return this.message;
+		}
+	}
+	
 	@RequestMapping("/hi")
-	public String sayHi(@RequestParam String name){
-		return "Hi, " + name +"!";
+	public Greeting sayHi(@RequestParam String name){
+		return new Greeting( "Hi, " + name +"!" );
 	}
 }
 
@@ -198,9 +209,9 @@ To see WebSockets in action, check out the following video.
 ### Secure, Connected Web Applications and Web Services with Spring
 
 #### Spring Security
-Spring Security integrates well with enterprise authentication and authorization backends like [SAML](http://projects.spring.io/spring-security-saml), [Kerberos](http://projects.spring.io/spring-security-kerberos), `pam`, and LDAP. Spring provides best-of-breed open-web and enterprise ready security for modern applications.  It can be used across the Spring IO platform. Spring Security can be used for enterprise-y integration with , and more. Spring Security also features best-of-breed support for open-web security and protection, supporting - for example -  acting as both an [OAuth client and service](http://spring.io/projects/spring-security-oauth) and provides [comprehensive CSRF protection](http://spring.io/blog/2013/08/21/spring-security-3-2-0-rc1-highlights-csrf-protection).
+Spring Security integrates well with enterprise authentication and authorization backends like [SAML](http://projects.spring.io/spring-security-saml), [Kerberos](http://projects.spring.io/spring-security-kerberos), `pam`, and LDAP. Spring Security provides best-of-breed open web-ready, and enterprise-ready, security for modern applications. Spring Security supports - for example -  acting as both an [OAuth client and service](http://spring.io/projects/spring-security-oauth) and provides [comprehensive CSRF (Cross Site Request Forgery]) protection](http://spring.io/blog/2013/08/21/spring-security-3-2-0-rc1-highlights-csrf-protection).
 
-There are many great resources to get started with Spring Security. Here are some:
+_Get Started_
 
 * The getting started [guide on securing web applications with Spring](http://spring.io/guides/gs/securing-web/) is an easy, quick way to get going
 quickly with Spring Security in a web application.
