@@ -324,7 +324,7 @@ Spring for Apache Hadoop is known to work with the following Hadoop distribution
 To learn more about Spring for Apache Hadoop, check out these resources:
 
 * the [Spring for Apache Hadoop samples](https://github.com/spring-projects/spring-hadoop-samples) demonstrate common concepts like how to use Cascading, YARN, and basic Map-Reduce with Spring for Hadoop.
-* check out the recent [Spring for Hadoop webinar]() ****TODO TODO what is the right link?**** 
+* check out this [Spring for Hadoop webinar](http://www.youtube.com/watch?v=gxWXEBW0nMM) 
 
 ## Online and Batch Processing of Data
 Spring clearly knows how to talk to the data sources you're probably most interested in talking to. The next question, of course, is how to process data from those datastores. Spring integration and data-processing solutions are rich.
@@ -375,11 +375,10 @@ In the video below, I demonstrate sending orders through a Spring XD HTTP endpoi
 
 For more resources on using Spring XD:
 
-* check out the [_getting started_ guide showing how to use Spring XD](http://spring.io/guides/gs/xd/) **TODO TODO WHAT IS LINK**
-* check out the [awesome talk from SpringOne2GX 2013 by Dr. David Syer and Mark Fisher]()  **TODO TODO WHAT IS LINK**
-* check out the Spring XD webinar on [our YouTube channel delivered recently](http://youtube.com/SpringSourceDev) ****TODO TODO what is the link****
+* check out the [_getting started_ guide showing how to use Spring XD](http://spring.io/guides/gs/spring-xd-osx/) 
+* check out the [webinar, _Tackling Big Data Challenges with Spring_](http://youtube.com/SpringSourceDev)  
 
-## Spring Runs Where Your Applications Run
+## Spring Runs Where Your Applications Run 
 Spring' portability-story is second to none. Today, the deployment targets for modern applications vary considerably and this portability has become more important than ever. 
 
 ### ..on Java EE 
