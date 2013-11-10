@@ -52,7 +52,8 @@ This is a Groovy-language Spring MVC REST controller that simply returns an obje
 #### Bootstrapping Your Development with our open-source and Eclipse-Based Spring Tool Suite and Groovy Tool Suite
 If you're a Java developer working in Eclipse then check out our open-source Eclipse-based [Spring Tool Suite](http://spring.io/tools/sts) and [Groovy/Grails Tool Suite](http://spring.io/tools/ggts) distributions. They layer on top of an existing instance of the latest-and-greatest Eclipse distribution or you can download them as separate IDEs. I think this last approach is the far more productive path, and, if you want anything else, just add it!
 
-<iframe width="420" height="315" src="http://www.youtube.com/embed/LSNiI9zSn6M" frameborder="0" allowfullscreen></iframe>
+<iframe width="560"  src="//www.youtube.com/embed/pXJvJIdBRn0" frameborder="0" allowfullscreen></iframe>
+<!-- <iframe width="420" height="315" src="http://www.youtube.com/embed/LSNiI9zSn6M" frameborder="0" allowfullscreen></iframe> -->
 
 ## A Richer Web with Spring
 ### Build Web Applications and Web Services with Spring
@@ -369,7 +370,7 @@ An example of defining a stream is shown  below: messages are expected from the 
 ``` 
 xd:> stream create --definition " time | log  " --name ticktock 
 ```
-In the video below, I demonstrate sending orders through a Spring XD HTTP endpoint and then having that data transit through a machine learning library (Madlib) hosted in the [Pivotal HD **TODO TODO what is the lINK**](http://gopivotal.com/pivotal-hd) single-node virtual machine. Pivotal HD is Pivotal's Hadoop distribution. The Madlib engine has a model, pre-trained with knowledge of certain types of fraudulent orders. It uses that model and [_linear regression **TODO TODO what is the link**_]()  to evaluate whether incoming orders are fraudulent, live. The results are reflected in the browser which updates every 5 seconds and highlights regions with fraudulent orders.
+In the video below, I demonstrate sending orders through a Spring XD HTTP endpoint and then having that data transit through a machine learning library (Madlib) hosted in the [Pivotal HD](http://www.gopivotal.com/pivotal-products/data/pivotal-hd) single-node virtual machine. Pivotal HD is Pivotal's Hadoop distribution. The Madlib engine has a model, pre-trained with knowledge of certain types of fraudulent orders. It uses that model and [_linear regression_](http://en.wikipedia.org/wiki/Linear_regression)  to evaluate whether incoming orders are fraudulent, live. The results are reflected in the browser which updates every 5 seconds and highlights regions with fraudulent orders.
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/BgehjMBi8oQ" frameborder="0" allowfullscreen></iframe>
 
@@ -399,7 +400,5 @@ Spring works well in other PaaS environments like Heroku, OpenShift, and - in pa
 @Configuration@Profile("cloud")public class CloudConfig {    @Bean public Cloud cloud()  throws CloudException {            CloudFactory cloudFactory = new CloudFactory();            return cloudFactory.getCloud();    }        @Bean public DataSource dataSource() {            return cloud().getSingletonServiceConnector(DataSource.class, null);       }}```
 
 
-## Not the End
-Spring continues to lead the charge, empowering modern developers to solve today's problems like no other platform can. If you have questions, let's carry this discu
-****** TODO TODO ******
-
+## This is Just the Beginning… 
+[Spring](http://spring.io) continues to lead the charge, empowering modern developers "to move at the speed (and scale) of business." It's growing better and better and - as part of [Pivotal](http://gopivotal.com) - it's happening even faster. The [community is a huge, and most important, part of that](http://github.com/Spring-projects). My name is [Josh Long](http://joshlong.com), I'm the Spring Developer Advocate, and I'd love to continue the discussion with you online. Don't hesitate to reach [me (@starbuxman)](http://twitter.com/starbuxman) or the rest of the [Spring team (@SpringCentral)](http://twitter.com/SpringCentral) on Twitter. We're always happy to hear from you, and help wherever possible. 
