@@ -401,4 +401,6 @@ Spring works well in other PaaS environments like Heroku, OpenShift, and - in pa
 
 
 ## This is Just the Beginning… 
+We've taken a look at the rich Spring IO platform and - I hope - looked at enough of the various technologies that you feel like you can take the next steps.
+
 [Spring](http://spring.io) continues to lead the charge, empowering modern developers "to move at the speed (and scale) of business." It's growing better and better and - as part of [Pivotal](http://gopivotal.com) - it's happening even faster. The [community is a huge, and most important, part of that](http://github.com/Spring-projects). My name is [Josh Long](http://joshlong.com), I'm the Spring Developer Advocate, and I'd love to continue the discussion with you online. Don't hesitate to reach [me (@starbuxman)](http://twitter.com/starbuxman) or the rest of the [Spring team (@SpringCentral)](http://twitter.com/SpringCentral) on Twitter. We're always happy to hear from you, and help wherever possible. 
