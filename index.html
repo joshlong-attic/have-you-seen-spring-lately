@@ -158,9 +158,11 @@ sup {
 <body>
 <h1>Have You Seen Spring Lately?</h1>
 
-<p>Today, developers are being asked to handle more challenges then ever, and to do so more quickly. It can be a dizzying task to keep up with today's technologies, but Spring has your back.</p>
+<p><IMG src = "./imgs/spring-io-logo.png" width="200" style="margin-right: 10px; float:left"/>  2013 has been a banner year for Spring! In April, we on the Spring team joined the <a href="http://gopivotal.com">Pivotal initiative</a>, and we're not alone! The new company is composed of Spring (including the <a href="http://grails.org">Grails</a>, <a href="http://rabbitmq.com">RabbitMQ</a>, <a href="http://tomcat.apache.org">Tomcat</a>, <a href="http://redis.io">Redis</a>, and <a href="http://gemfire.com">GemFire</a> teams), <a href="http://cloudfoundry.org">Cloud Foundry</a> (the open source <a href="http://wikipedia.org/wiki/platform-as-a-service">PaaS (platform-as-a-service)</a>, and <a href="http://gopivotal.com/greenplum">Greenplum</a> (who have leadership in smart data warehousing and Hadoop, among other things).</p>
 
-<p>In this article we'll look at the latest and greatest Spring projects and their place in the <em>Spring IO</em> platform.</p>
+<p>Today, developers are being asked to handle more challenges then ever, and to do so more quickly. It can be a dizzying task to keep up with today's technologies, especially given the ongoing innovation surrounding big-data, cloud computing, mobile, and web development, but Spring (and <a href="http://twitter.com/gopivotal">Pivotal (@gopivotal)</a> has your back! Spring is part of a larger platform that we're calling <em>Spring IO</em>.</p>
+
+<p>In this article we'll look at the latest and greatest Spring projects and their place in the Spring IO platform.</p>
 
 <p><img src="./imgs/spring-io-platform.jpg" title="the Spring IO platform" alt="the Spring IO platform" /></p>
 
@@ -173,13 +175,13 @@ sup {
 </ul>
 
 
-<p>From there, a developer may expect to use   any of the Spring modules in the <em>IO Foundation</em> box supporting integration, batch processing, big data, and web applications, all of which work with our data-access and processing APIs and enjoy the support of cross-cutting technologies like the core dependency injection container, the reactive <a href="http://github.com/reactor"><em>Reactor</em></a> framework, and  the <a href="http://spring.io/projects/spring-security">Spring Security</a> project.</p>
+<p>From there, a developer may expect to use   any of the Spring modules in the <em>IO Foundation</em> tier supporting integration, batch processing, big data, and web applications, all of which work with our data-access and processing APIs and enjoy the support of cross-cutting technologies like the core dependency injection container, the reactive <a href="http://githubggffh.com/reactor"><em>Reactor</em></a> framework, and  the <a href="http://spring.io/projects/spring-security">Spring Security</a> framework.</p>
 
 <h2>A New Beginning for Spring and For You</h2>
 
 <h3>Spring Has a New Home!</h3>
 
-<p>Spring's new home on the web is <a href="http://spring.io">http://spring.io</a>. Spring.io is your one-stop shop for <a href="https://spring.io/docs">documentation</a>, the <a href="http://forum.spring.io/">forums</a>, the <a href="https://spring.io/blog">blog</a>, detailed <a href="https://spring.io/projects">project information</a>, and new <a href="http://spring.io/guides">getting-started guides</a> and tutorials.</p>
+<p>Spring's new home on the web is <a href="http://spring.io">http://spring.io</a>. Spring.io is your one-stop shop for <a href="https://spring.io/docs">documentation</a>, the <a href="http://forum.spring.io/">forums</a>, the <a href="https://spring.io/blog">blog</a>, detailed <a href="https://spring.io/projects">project information</a>, and new <a href="http://spring.io/guides">getting-started guides</a> and tutorials. We put up a lot of great, technical content on the blog every week. Every tuesday, I put up a post called <em>This Week in Spring</em> which aggregates great blogs, tutorials, and videos from our team and from the Spring community.</p>
 
 <h3>"How Do I Get Started, Quickly?"</h3>
 
@@ -212,7 +214,7 @@ class Example {
 
 <h4>Bootstrapping Your Development with our open-source and Eclipse-Based Spring Tool Suite and Groovy Tool Suite</h4>
 
-<p>If you're a Java developer working in Eclipse then check out our open-source <a href="http://spring.io/tools/sts">Spring Tool Suite</a> and <a href="http://spring.io/tools/ggts">Groovy/Grails Tool Suite</a> distributions. They layer on top of an existing instance of the latest-and-greatest Eclipse distribution or you can download them as separate IDEs. I think this last approach is the far more productive path, and, if you want anything else, just add it!</p>
+<p>If you're a Java developer working in Eclipse then check out our open-source Eclipse-based <a href="http://spring.io/tools/sts">Spring Tool Suite</a> and <a href="http://spring.io/tools/ggts">Groovy/Grails Tool Suite</a> distributions. They layer on top of an existing instance of the latest-and-greatest Eclipse distribution or you can download them as separate IDEs. I think this last approach is the far more productive path, and, if you want anything else, just add it!</p>
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/LSNiI9zSn6M" frameborder="0" allowfullscreen></iframe>
 
@@ -221,7 +223,7 @@ class Example {
 
 <h3>Build Web Applications and Web Services with Spring</h3>
 
-<p>Today's applications are as often as not REST-powered backends with rich, JavaScript and HTML5 or native mobile front ends. <a href="http://wikipedia.org/wiki/Representational_state_transfer">REST</a>, of course, is not a standard but a set of principles designed to promote the use and consumption of services that build on, as opposed to merely transit through, HTTP as a platform.</p>
+<p>Today's web applications are as often as not REST-powered backends with rich JavaScript / HTML5 or native mobile front ends. <a href="http://wikipedia.org/wiki/Representational_state_transfer">REST</a> is not a standard but a set of principles designed to promote the use and consumption of services that fully exploit, as opposed to merely transit through, HTTP.</p>
 
 <h4>REST</h4>
 
@@ -254,34 +256,37 @@ public class GreetingController {
 }
 </code></pre>
 
-<p>Here's an example of a REST web service that exposes information about <code>user</code> and <code>customer</code> entities under the <code>/users</code> and <code>/customers</code> endpoints. In the video we'll use basic HTTP <code>GET</code> access from the browser and through an HTTP client that can be installed as a browser plugin to read and delete records.</p>
-
-<p>Note that the output is <a href="http://www.wikipedia.com/wiki/json">in JSON encoding</a>.</p>
+<p>Here's an example of a REST web service that exposes information about <code>user</code> and <code>customer</code> entities under the <code>/users</code> and <code>/customers</code> endpoints. In the video I manipulate the REST service through regular old browser access and through a REST plugin. Note that the output is <a href="http://www.wikipedia.com/wiki/json">in JSON encoding</a>.</p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/OJa_alLc_Iw" frameborder="0" allowfullscreen></iframe>
 
 
 <h4>Smarter Clients with Hypermedia and Spring HATEOAS</h4>
 
-<p>In the example above, our REST services worked, but suffered from a few weaknesses. First, clients would need to know the deep-links a-priori to be able to access any other resources related to a given entity. In addition, there's no accounting for state! Some resources are stateful. For example, it shouldn't be possible to add something to a shopping cart after the user's already checked out, but there's nothing stopping a client from trying, anyway.</p>
+<p>This is a good start, but we can do better. First, clients would need to know the deep-links <em>a-priori</em> to be able to access any other resources related to a given entity. In addition, there's no accounting for state! Some resources are stateful. For example, it shouldn't be possible to add something to a shopping cart after the user's already checked out, but there's nothing stopping a client from trying, anyway.</p>
 
-<p><a href="http://wikipedia.org/wiki/hypermedia">Hypermedia</a>, as espoused in the <a href="http://wikipedia.org/wiki/hateoas">HATEOAS</a> design pattern can help us here. Ultimately, HATEOAS is just about encoding metadata, or <em>hypermedia</em>, along with the response.</p>
+<p><a href="http://wikipedia.org/wiki/hypermedia">Hypermedia</a>, as espoused in the <a href="http://wikipedia.org/wiki/hateoas">HATEOAS</a> design pattern, can help us here. Ultimately, HATEOAS is just about encoding metadata, or <em>hypermedia</em>, along with the response.</p>
 
-<p>If you use Spring HATEOAS, you simply return a Spring HATEOAS <code>Resource&lt;T&gt;</code> instance from your Spring MVC controller methods. Here is an example interaction with a HATEOAS-flavored rewrite of the first example:</p>
+<p>Spring HATEOAS <code>Resource</code> objects act as envelope for your data and carry <em>links</em> that describe relevant resources. Here's a Spring MVC REST controller method that uses Spring HATEOAS:</p>
 
 <pre><code>    @RequestMapping(method = RequestMethod.DELETE, value = "/users/{user}")
     @ResponseBody Resource&lt;User&gt; deleteUser( @PathVariable Long userId ) {
         User user = crmService.removeUser(userId);
         Collection&lt;Link&gt; links = new ArrayList&lt;Link&gt;();
 
-        links.add(linkTo(methodOn(UserController.class)
-            .loadUser(userId)).withSelfRel());
+        // "/users/5"
+        Link self = linkTo(methodOn(UserController.class)
+            .loadUser(userId)).withSelfRel();
 
-        links.add(linkTo(methodOn(UserController.class)
-            .loadUserCustomers(userId)).withRel( "customers" ));
+        // "/users/5/customers"
+        Link customers = linkTo(methodOn(UserController.class)
+            .loadUserCustomers(userId)).withRel( "customers" );
 
-        links.add(linkTo(methodOn(UserProfilePhotoController.class)
-            .loadUserProfilePhoto(userId)).withRel( "photo" ));
+        // "/users/5/photo"
+        Link photo = linkTo(methodOn(UserProfilePhotoController.class)
+            .loadUserProfilePhoto(userId)).withRel( "photo" );
+
+        links.addAll(photo, customers, self);
 
         Resource&lt;User&gt; userResource = new Resource&lt;User&gt;(user, links);
         return new ResponseEntity&lt;Resource&lt;User&gt;&gt;(userResource, HttpStatus.OK);
@@ -304,7 +309,7 @@ entity being returned to the client. The result looks something like this:</p>
 }
 </code></pre>
 
-<p>This extra metadata links to resources that have <em>relevant</em> relationships with this resource. Clients follow <code>rel</code>s, not URIs, and can tailor their behavior based on the presence of absence of <code>link</code>s. A <code>link</code> to checkout, for example, would be inappropriate when there's nothing in the shopping cart.</p>
+<p>This extra metadata links to resources that have <em>relevant</em> relationships with this resource. Clients follow <code>rel</code>s, not URIs, and can tailor their behavior based on the presence of absence of <code>link</code>s. A <code>link</code> to pay for an order in a commerce application would be inappropriate when there's nothing in the shopping cart, for example.</p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/WTJvPP_h8wY" frameborder="0" allowfullscreen></iframe>
 
@@ -321,11 +326,13 @@ entity being returned to the client. The result looks something like this:</p>
 
 <h4>WebSockets</h4>
 
-<p>REST is a great approach to building HTTP-bound web services, but HTTP is essentially a one-sided conversation where the client may only initiate conversations. For an application to be more interactive, it needs to needs to support bi-directional, asynchronous communication between the client and server. <a href="http://wikipedia.org/wiki/websockets">Websockets</a> is a standardized protocol designed to support these requirements, essentially exposing a bidirectional socket from the server to the client. A secure version of the WebSocket protocol is implemented in Firefox 6, Safari 6, Google Chrome 14, Opera 12.10 and Internet Explorer 10.</p>
+<p>REST is a great approach to building HTTP-bound web services, but HTTP is essentially a one-sided conversation which only the client can initiate. <a href="http://wikipedia.org/wiki/websockets">Websockets</a> is a standardized protocol for bi-directional, messaging-style communication between the client and the server.  A secure version of the WebSocket protocol is implemented in Firefox 6, Safari 6, Google Chrome 14, Opera 12.10 and Internet Explorer 10.</p>
 
-<p>Spring supports the <a href="http://jcp.org/en/jsr/detail?id=356">related JSR 356</a>, but offers far more than just that, filling in the gaps where the JSR (understandably) was vague. Spring's WebSocket support can work independent of the JSR, and offers support for STOMP-framed messaging over WebSockets. In addition, Spring also supports the Sock.JS protocol, a superset of the WebSocket protocol that the popular Sock.js client can use to work around firewall restrictions and offer graceful degradation of experience on older browsers.</p>
+<p>Spring supports the <a href="http://jcp.org/en/jsr/detail?id=356">related websocket JSR 356</a>, but offers far more than just that, filling in the gaps where the JSR was (understandably) vague. Spring's WebSocket support can work independently of the JSR, and offers support for <a href="http://wikipedia.org/wiki/stomp">STOMP</a>-framed messaging over WebSockets. Spring also supports the <a href="http://wikipedia.org/wiki/sock.js">Sock.js</a> protocol, a superset of the WebSocket protocol that the popular Sock.js JavaScript client can use to work around firewall restrictions and offer graceful degradation of communication on older browsers where websockets may not be available.</p>
 
-<p>Here is an example of a WebSocket-ready Spring MVC controller. The <code>getPositions</code> method handles all calls from the client to <em>subscribe</em> to events on the <code>/positions</code> destination. This is a passive channel that sends back positions at the time of the call. The <code>executeTrade</code> method handles calls from the client into the Spring MVC websocket controller. Both methods are accompanied by an argument for the <code>javax.security.Principal</code> which Spring Security is placing in the request for us, automatically.</p>
+<p>Here is an example of a WebSocket-ready Spring MVC controller. The <code>getPositions</code> method handles all calls from the client to <em>subscribe</em> to events on the <code>/positions</code> destination. This is a passive channel that sends back positions at the time of the call.</p>
+
+<p>The <code>executeTrade</code> method handles calls from the client into the Spring MVC websocket controller. Both methods are accompanied by an argument for the <code>javax.security.Principal</code> which Spring Security places in the request for us, automatically.</p>
 
 <pre><code>
 @Controller
@@ -370,18 +377,18 @@ public class PortfolioController {
 
 
 <ul>
-<li>Rossen Stoyanchev has an amazing <a href="https://github.com/rstoyanchev/spring-websocket-portfolio">websocket example application here</a>. The video above demonstrates this code.</li>
+<li>Rossen Stoyanchev has an amazing <a href="https://github.com/rstoyanchev/spring-websocket-portfolio">websocket example application here</a>. The video above demonstrates this code in action.</li>
 <li>Rossen also put together a fantastic webinar introducing <a href="http://spring.io/blog/2013/10/23/webinar-replay-building-websocket-browser-applications-with-spring">websocket support and using that very same sample application as a demo</a>.</li>
 </ul>
 
 
 <h3>Secure, Connected Web Applications and Web Services with Spring</h3>
 
-<h4>Spring Security</h4>
+<h4>Security</h4>
 
-<p>Spring Security integrates well with enterprise authentication and authorization backends like <a href="http://projects.spring.io/spring-security-saml">SAML</a>, <a href="http://projects.spring.io/spring-security-kerberos">Kerberos</a>, <code>pam</code>, and LDAP. Spring Security provides best-of-breed open web-ready, and enterprise-ready, security for modern applications. Spring Security supports - for example -  acting as both an <a href="http://spring.io/projects/spring-security-oauth">OAuth client and service</a> and provides [comprehensive CSRF (Cross Site Request Forgery]) protection](http://spring.io/blog/2013/08/21/spring-security-3-2-0-rc1-highlights-csrf-protection).</p>
+<p><a href="http://spring.io/projects/spring-security">Spring Security</a> integrates well with enterprise authentication and authorization backends like <a href="http://projects.spring.io/spring-security-saml">SAML</a>, <a href="http://projects.spring.io/spring-security-kerberos">Kerberos</a>, <code>pam</code>, and LDAP. Spring Security provides best-of-breed, open web-ready, and enterprise-ready, security for modern applications. Spring Security supports - for example - acting as both an <a href="http://spring.io/projects/spring-security-oauth">OAuth client and securing a service with OAuth</a> and provides protection for modern web applications  including [comprehensive CSRF (Cross Site Request Forgery]) protection](http://spring.io/blog/2013/08/21/spring-security-3-2-0-rc1-highlights-csrf-protection) and session-fixation protection.</p>
 
-<p><em>Get Started</em></p>
+<p>Here are some resources to help you get started with Spring Security:</p>
 
 <ul>
 <li>The getting started <a href="http://spring.io/guides/gs/securing-web/">guide on securing web applications with Spring</a> is an easy, quick way to get going
@@ -390,17 +397,13 @@ quickly with Spring Security in a web application.</li>
 </ul>
 
 
-<h4>Spring Social</h4>
+<h4>Building on the Connected Web with Spring Social</h4>
 
-<p>Today's web is busy, connected. Today's users have lives all of their own online, and the best applications usually
-find a way to integrate with that online persona. This is easy to do because, thanks to REST, there are many rich third party
- APIs with which to integrate today - SOA has finally arrived! - and by and large they're all secured with either OAuth 1.0, OAuth 1.0.a or OAuth 2.0.
- Spring Social provides the core OAuth authentication and authorization support as an OAuth client, and makes it dead simple to layer on top type-safe
- Java API bindings. There are many bindings provided out of the box, and via a <a href="https://github.com/Spring-Projects/spring-social/wiki/api-providers">rich ecosystem of third party bindings</a> built on top of Spring Social.</p>
+<p>Your users are online, connected, and social. It's hard to ignore the opportunity presented as integration with service provider APIs like Facebook, Twitter, and Pinterest. There are many rich third party APIs with which to integrate today - SOA has finally arrived! - and by and large they're all secured with either OAuth 1.0, OAuth 1.0.a or OAuth 2.0. I would be dishonest if I didn't tell you that OAuth is an <em>extraordinary</em> pain to implement without support. <a href="http://spring.io/projects/spring-social">Spring Social</a> provides that support. Spring Social provides numerous API bindings that build on top of Spring Social's authentication and authorization support. There are even more API bindings available through the <a href="https://github.com/Spring-Projects/spring-social/wiki/api-providers">rich ecosystem of third party providers</a> that build on top of Spring Social!</p>
 
 <p><img src="./imgs/a_connected_world_in_60_seconds.png" title="A connected world in 60 seconds" alt="A connected world in 60 seconds" /></p>
 
-<p>Once Spring Social Facebook has established a valid Facebook API connection, we can use the <code>Facebook</code> API in our Spring MVC code with no problems!</p>
+<p>Here, for example, is how we might use the Spring Social Facebook binding in one of our Spring MVC controllers:</p>
 
 <pre><code>@Controller
 @RequestMapping("/")
@@ -417,12 +420,11 @@ public class HelloController {
 }
 </code></pre>
 
-<p> Here's an example working through the <a href="https://github.com/spring-projects/spring-social-samples/tree/master/spring-social-showcase">Spring Social Showcase</a>, which features lots of cool integrations and examples. Other third party bindings
- often add their own screens when they fork this particular project to showcase their binding's unique features.</p>
+<p>In the following video, we walk through the <a href="https://github.com/spring-projects/spring-social-samples/tree/master/spring-social-showcase">Spring Social Showcase</a> which demonstrates Spring Social making short work of typical "Sign in with .." style forms and API communication. Third party bindings often add their own screens when they fork this particular project to showcase their binding's unique features.</p>
 
 <p> <iframe width="560" height="315" src="http://www.youtube.com/embed/XAq6JQqCGBM" frameborder="0" allowfullscreen></iframe></p>
 
-<p> There are a lot of great ways to get started with Spring Social.</p>
+<p>Here are some resources to get started with Spring Social:</p>
 
 <ul>
 <li>I'd check out the getting started guide on registering a <a href="http://spring.io/guides/gs/register-facebook-app/">Facebook developer application</a> and <a href="http://spring.io/guides/gs/accessing-facebook/">accessing Facebook Facebook data</a>.</li>
@@ -432,38 +434,44 @@ public class HelloController {
 
 <h3>The Mobile Web</h3>
 
-<p>Today's users are accessing the web primarily through their mobile devices. Mobile applications extend the reach of your business significantly.</p>
+<p>Today's users access the web in increasing numbers through their mobile devices. Mobile applications extend significantly the reach of your application to your users' mobile devices (which never leave most people's pockets!), tablets, cars, and more.</p>
 
 <p><img src="./imgs/mobile_uptake.png" title="mobile platform uptake (in millions) for 2Q 2012 and 2013" alt="mobile platform uptake (in millions) for 2Q 2012 and 2013" /></p>
 
-<p>There are many people using mobile ecosystem applications and Spring can get you there, quicker. <a href="http://projects.spring.io/spring-android/">Spring for Android</a> provides the powerful <code>RestTemplate</code> object and makes it so that any REST service you'd like to talkto  is as easy as in the core Spring framework. Spring for Android can even be made to work with Spring Social-provided bindings!</p>
+<p>The numbers presented in the chart are numbers most developers can't afford to ignore. Thankfully they don't have to if they use Spring! When I look at that chart, it's pretty clear to me that building for Android and iOS makes a lot of sense. These are rich platforms with native, idiomatic ways of doing things. <a href="http://projects.spring.io/spring-android/">Spring for Android</a> helps you build connected  Android clients, quicker. Particularly, it brings Spring framework's <code>RestTemplate</code> to Android. <code>RestTemplate</code> is an HTTP client from the core Spring framework that makes it trivial to work with HTTP resources. Spring Social builds on top of the <code>RestTemplate</code> and Spring Social bindings can work on Android, too!</p>
 
-<p>Spring Mobile makes it easy to serve mobile-form factor friendly HTML applications and handle moble visitors in a more device-appropriate way. This can be a useful approach when developing fallback experiences for platforms you don't intend to prioritize. Many companies adopt such a strategy for applications not destined for Android or iOS.</p>
+<p><a href="http://spring.io/projects/spring-mobile">Spring Mobile</a> makes it easy to serve mobile form-factor friendly HTML applications and handle mobile visitors in a device-appropriate way. This can be a useful approach when developing fallback experiences for platforms you don't intend to prioritize. Many companies adopt such a strategy, in addition to native Android and iOS applications, to accomodate all the other platforms out there for which it may not be worthwhile to develop a native solution. This is also a future-proof strategy: future platforms will no doubt support a browser, and - if nothing else - can use your application through a mobile web applications.</p>
 
-<p>Here's an example of working with two applications, one an iOS Objective-C client and the other a Spring for Android client. They both speak OAuth to communicate with the Spring Security OAuth-secured REST service I introduced earlier.</p>
+<p>Here's an example of working with two applications, one an iOS Objective-C client (on the right) and the other a Spring for Android client (on the left). They both use OAuth to communicate with the Spring Security OAuth-secured REST service I introduced earlier.</p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/fgNL_g3K7FI" frameborder="0" allowfullscreen></iframe>
 
 
 <h2>Dealing with Data</h2>
 
-<p>Spring provides a rich set of technologies to work with data and data-services.</p>
+<p>Spring provides a rich set of technologies to work with data.</p>
 
 <h3>Traditional RDMBSes</h3>
 
-<p>The core Spring framework has great support for JDBC, and JDBC-based ORM access, including a transaction API that insulates you from the various incompatible nuances typical of transactional resources like SQL databases and message queues.</p>
+<p>The core Spring framework has great support for JDBC, and JDBC-based ORM access. It includes a transaction API that insulates you from the (incompatible) nuances typical of transactional resources like SQL databases, JMS and AMQP message brokers, and JPA / Hibernate ORM clients. Spring's support here is already legendary, and with Java 8's developer previews already available,  becomes even <em>more</em> expressive! Below us an example of using Java 8's lambda expressions with Spring's <code>JdbcTemplate</code>, a workhorse for JDBC-driven data access:</p>
+
+<pre><code>   User user = jdbcTemplate.queryForObject( 
+      "select * from USERS where ID = ?" ,  
+       (resultSet, rowNum ) -&gt; new User( resultSet.getLong("ID"), resultSet.getString("EMAIL")),
+       423L ) ;
+</code></pre>
 
 <h3>NoSQL, NewSQL, and NOSQL with Spring Data</h3>
 
-<p>The Spring Data projects embrace the new breed of so-called NoSQL, NewSQL, or NOSQL solutions. Spring Data is not one API to rule them all, instead it is an umbrella project with specific APIs for popular "database" technologies like <a href="http://projects.spring.io/spring-data-redis/">Redis</a>, <a href="http://projects.spring.io/spring-data-mongodb/">MongoDB</a>, and <a href="http://projects.spring.io/spring-data-neo4j/">Neo4J</a>. There are many third party bindings, and  some support technologies like ElasticSearch and SOLR, CouchDB, and Riak.</p>
+<p>The <a href="http://Spring.io/projects/spring-data">Spring Data</a> projects embrace the new breed of so-called <a href="http://wikipedia.org/wiki/NoSQL">NoSQL</a>, NewSQL, or NOSQL (not-only-SQL) solutions. Spring Data is not one API to rule them all, instead it is an umbrella project with specific APIs for popular "database" technologies like <a href="http://projects.spring.io/spring-data-redis/">Redis</a>, <a href="http://projects.spring.io/spring-data-mongodb/">MongoDB</a>, and <a href="http://projects.spring.io/spring-data-neo4j/">Neo4J</a>. In addition, there are many third party bindings for projects like ElasticSearch, SOLR, CouchDB, and Riak.</p>
 
-<p>One concept common to many Spring Data modules, including the <a href="http://spring.io/projects/spring-data-jpa">Spring Data JPA</a> module, is the notion of a Spring Data repository. A Spring Data repository is an interface that Spring Data implements at runtime using convention-over-configuration to satisfy the interface contract dynamically, typically by interacting with some backend resource. Here's a Spring Data JPA repository that I can inject anywhere in my code and use. I've commented what sort of query each method generates, basically.</p>
+<p>One concept common to many Spring Data modules, including the <a href="http://spring.io/projects/spring-data-jpa">Spring Data JPA</a> module, is the notion of a <em>repository</em>. A Spring Data repository, named for the <em>repository</em> design pattern, is an interface that Spring Data implements at runtime using convention-over-configuration to dynamically build the implementation, typically by interacting with some backend resource. Here's a Spring Data JPA repository that I can inject and use anywhere in my code. I've added in comments a rough example of the query that each method generates.</p>
 
 <pre><code>@RestResource (path = "users", rel = "users")  // automatically exposes a REST endpoint at /users/*
 public interface UserRepository extends PagingAndSortingRepository&lt;User, Long&gt; {
 
     // select * from users where username = ?
-    User findByUsername(@Param("username") String username);
+    User findByUsername(@Param("username") String username); 
 
     // select * from users where firstName =? or lastName = ? or username = ?
     List&lt;User&gt; findUsersByFirstNameOrLastNameOrUsername(
@@ -474,11 +482,11 @@ public interface UserRepository extends PagingAndSortingRepository&lt;User, Long
 }
 </code></pre>
 
-<p>In this case I've turned on Spring Data JPA's repository support, but I could've just as easily turned on Spring Data MongoDB's, Spring Data Neo4j's or Spring Data GemFire's and those query methods would've instead mapped to those backend databases, instead of SQL.</p>
+<p>In this case I've used Spring Data JPA's repository support, but I could've just as easily used Spring Data MongoDB's, Spring Data Neo4j's or Spring Data GemFire's and those query methods would've instead mapped to those backend databases, instead of SQL. Note, also, the <code>@RestResource</code> annotation provided by Spring Data REST. This annotation transparently maps the repository to a RESTful service endpoint and works in conjunction with Spring MVC. That's not to shabby for a single Java interface!</p>
 
-<h3>Surviving the Hadoop Wild, Wild West with Spring for Apache Hadoop</h3>
+<h3>Surviving the Big-Data Wild, Wild West with Spring for Apache Hadoop</h3>
 
-<p>Today's Hadoop ecosystem represents a fantastic new opportunity with some very familiar problems. Think back to 2003 - Spring was new on the scene - and being the guy that could get Hibernate, Quartz and Struts working in the same web application ten years ago was a surefire way to become an office rock-star! These projects were developed in isolation by individual open-source projects absent each other's use-cases and standards: they did not share common runtime concepts and did not share common API concepts like transaction management. In today's world, using Hibernate and Struts and Quartz in the same application is a snap thanks to Spring. In the Hadoop ecosystem today, we find ourselves with the same sort of integration challenges and here again Spring is offering a solution. <a href="http://spring.io/projects/spring-hadoop">Spring for Apache Hadoop</a> makes working with Hadoop-ecosystem technologies like HBase, Hive, Pig, Cascading, and YARN from within standard Spring as easy as possible. In addition, Spring for Apache Hadoop can rely on platform niceties like property-placeholder resolution to ease configuration.</p>
+<p>Today's Hadoop ecosystem represents a fantastic new opportunity with some very familiar problems. Think back to 2003 - Spring was new on the scene - and being the developer that managed to Hibernate, Quartz and Struts working in the same web application ten years ago was the office rock-star! These projects were developed in isolation by individual open-source projects absent each other's use-cases and standards: they did not share common runtime concepts and did not share common API concepts like transaction management. In today's world, using Hibernate and Struts (or Spring MVC) and Quartz in the same application is a snap thanks to Spring. In the Hadoop ecosystem today, we find ourselves with the same sort of integration challenges and here again Spring offers a solution. <a href="http://spring.io/projects/spring-hadoop">Spring for Apache Hadoop</a> makes working with Hadoop-ecosystem technologies like HBase, Hive, Pig, Cascading, and YARN from within standard Spring as easy as possible. In addition, Spring for Apache Hadoop can rely on platform niceties like property-placeholder resolution to ease configuration.</p>
 
 <p>Spring for Apache Hadoop is known to work with the following Hadoop distributions:</p>
 
@@ -492,22 +500,23 @@ public interface UserRepository extends PagingAndSortingRepository&lt;User, Long
 </ul>
 
 
-<p><img src="./imgs/spring-for-hadoop.png" title="the Spring for Apache Hadoop ecosystem" alt="the Spring for Apache Hadoop ecosystem" /></p>
+<p><img src="./imgs/spring-for-hadoop-2.png" title="the Spring for Apache Hadoop ecosystem" alt="the Spring for Apache Hadoop ecosystem" /></p>
 
 <p>To learn more about Spring for Apache Hadoop, check out these resources:</p>
 
 <ul>
 <li>the <a href="https://github.com/spring-projects/spring-hadoop-samples">Spring for Apache Hadoop samples</a> demonstrate common concepts like how to use Cascading, YARN, and basic Map-Reduce with Spring for Hadoop.</li>
+<li>check out the recent <a href="">Spring for Hadoop webinar</a> <strong><strong>TODO TODO what is the right link?</strong></strong></li>
 </ul>
 
 
 <h2>Online and Batch Processing of Data</h2>
 
-<p>Spring clearly knows how to talk to the data sources you're probably most interested in talking to. The next question, of course, is how to process data from those datastores. Spring supports all manner of approaches.</p>
+<p>Spring clearly knows how to talk to the data sources you're probably most interested in talking to. The next question, of course, is how to process data from those datastores. Spring integration and data-processing solutions are rich.</p>
 
 <h3>Spring Integration to Build Messaging-Driven Architectures</h3>
 
-<p><a href="http://spring.io/projects/spring-integration">Spring Integration</a> is an integration framework in the style of the patterns in Gregor Hohpe and Bobby Woolf's epic tome, <em>Enterprise Integration Patterns</em>. In the world of Enterprise Integration, systems are connected through channels (message queueus). Messages flow from one component to another, transforming, enriching, splitting, aggregating and routing messages as they fly through the event bus. Spring Integration offers a set of adapters - components that can adapt messages from external systems into standard Spring Integration messages and thus connect Spring Integration applications with the different systems like FTPS, SFTP, Twitter, Splunk, JDBC, JMS, AMQP, Twitter, and GemFire continuous-queries.</p>
+<p><a href="http://spring.io/projects/spring-integration">Spring Integration</a> is an integration framework in the style of the patterns in Gregor Hohpe and Bobby Woolf's epic tome, <em>Enterprise Integration Patterns</em>. In the world of Enterprise Integration, systems are connected through <em>channels</em> (message queueus). Messages flow from one component to another which can transform, enrich, split, aggregate and route messages. Spring Integration offers a set of adapters - components that adapt messages from external systems into standard Spring Integration messages. In this way, Spring Integration applications can <em>integrate</em> data and services from different systems and protocols like FTPS, XMPP, JDBC, SFTP, Hadoop's HDFS, Twitter, Splunk, JDBC, JMS, AMQP, Twitter, and GemFire continuous-queries.</p>
 
 <p><img src="./imgs/message-channels.png" title="the Spring Integration Pipes 'n Filters model" alt="the Spring Integration Pipes 'n Filters model" /></p>
 
@@ -519,7 +528,7 @@ public interface UserRepository extends PagingAndSortingRepository&lt;User, Long
 
 <p><img src="./imgs/anatomy-of-batch-job.png" title="the anatomy of a Batch Job" alt="the Spring Integration Pipes 'n Filters model" /></p>
 
-<p>Here's an example of using Spring Integration to respond to new file system events ("there's a new file in a monitored folder") and then, as a result, process the file using Spring Batch. The code is available in the resources below.</p>
+<p>Here's an example of using Spring Integration to respond to new file system events ("there's a new file in a monitored folder") and then  process the file using Spring Batch. The code is available in the resources below.</p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/wo2gs_1QTXs" frameborder="0" allowfullscreen></iframe>
 
@@ -528,22 +537,76 @@ public interface UserRepository extends PagingAndSortingRepository&lt;User, Long
 
 <ul>
 <li>check out the  <a href="http://spring.io/guides/gs/batch-processing/"><em>gettting started</em> guide showing how to do batch processing with Spring Batch</a>.</li>
-<li>check out the  <a href="http://spring.io/guides/gs/integration/"><em>getting started</em> guide showing how to data integration with Spring Integration</a></li>
+<li>check out the  <a href="http://spring.io/guides/gs/integration/"><em>getting started</em> guide showing how to do data and service integration with Spring Integration</a></li>
 <li>the code for the demo above is available on my GitHub account as part of a larger codebase, <a href="https://github.com/joshlong/a-walking-tour-of-all-of-springdom"><em>A Walking Tour of All of Springdom</em></a>.</li>
 </ul>
 
 
 <h3>Surfing the Tidal Data Deluge with Spring XD</h3>
 
+<p>Today's applications are real-time, and work with lots of data. It's one thing to setup a Hadoop cluster to handle batch processing and warehousing, but many developers today are struggling with a different problem:  how do I absorb the load of data fast enough to get it into Hadoop in the first place? This challenge is called <em>stream processing</em> or <em>data integration</em>. <a href="http://spring.io/projects/spring-xd">Spring XD</a> puts these types of problems squarely in its cross hairs. Spring XD is built on top of Spring Integration and Spring Batch, so benefits from the rich set of adapters and the event-driven processing paradigm that Spring Integration brings with it, and it benefits from the data-processing- and job-orchestration smarts that Spring Batch brings with it.</p>
+
+<p>In Spring XD, data comes in from a <em>source</em> and may then   be procesed, analysed and ultimately written to a <em>sink</em>. A given path through which data transits in Spring XD is called a <em>stream</em>.  Spring XD is a turnkey runtime. Components are defined in terms of Spring Integration flows and Spring Batch jobs and given IDs, and then managed by Spring XD. Spring XD components are orchestrated (and referenced by their ID) using a DSL that looks (uncannily!) like what   Unix <code>bash</code> command-line incantation piping <code>stdin</code> and <code>stdout</code> from one singly-focused command line utility to another. This is no accident: Spring XD embraces the <em>pipes and filters</em> paradigm. The other benefit of this orchestration DSL is that it's high-level enough that a business analyst or higher-level operator might use it. Spring XD can transparently scale out to accomodate load, distributing processing across multiple nodes.</p>
+
+<p><img src="./imgs/spring-xd.png" title="Spring XD applications work with data from inbound  sources like SFTP, Twitter, and Splunk, process them, and then write them out to sinks like FTPS, SFTP, and Splunk" alt="Spring XD is a central hub for integration and data processing" /></p>
+
+<p>An example of defining a stream is shown  below: messages are expected from the <code>time</code> component and are passed to the <code>log</code> component, whatever these two components (<code>time</code>, and <code>log</code>) are and do is up to you. This is of course a very simple example. You can script very complex workflows in this way and change flows on the fly all from the Spring XD operator <code>shell</code>.</p>
+
+<pre><code>xd:&gt; stream create --definition " time | log  " --name ticktock 
+</code></pre>
+
+<p>In the video below, I demonstrate sending orders through a Spring XD HTTP endpoint and then having that data transit through a machine learning library (Madlib) hosted in the <a href="http://gopivotal.com/pivotal-hd">Pivotal HD <strong>TODO TODO what is the lINK</strong></a> single-node virtual machine. Pivotal HD is Pivotal's Hadoop distribution. The Madlib engine has a model, pre-trained with knowledge of certain types of fraudulent orders. It uses that model and <a href=""><em>linear regression <strong>TODO TODO what is the link</strong></em></a>  to evaluate whether incoming orders are fraudulent, live. The results are reflected in the browser which updates every 5 seconds and highlights regions with fraudulent orders.</p>
+
 <iframe width="560" height="315" src="http://www.youtube.com/embed/BgehjMBi8oQ" frameborder="0" allowfullscreen></iframe>
 
 
-<h2>Spring is Where You Want To Be</h2>
+<p>For more resources on using Spring XD:</p>
 
-<h3>on Java EE 7</h3>
+<ul>
+<li>check out the <a href="http://spring.io/guides/gs/xd/"><em>getting started</em> guide showing how to use Spring XD</a> <strong>TODO TODO WHAT IS LINK</strong></li>
+<li>check out the <a href="">awesome talk from SpringOne2GX 2013 by Dr. David Syer and Mark Fisher</a>  <strong>TODO TODO WHAT IS LINK</strong></li>
+<li>check out the Spring XD webinar on <a href="http://youtube.com/SpringSourceDev">our YouTube channel delivered recently</a> <strong><strong>TODO TODO what is the link</strong></strong></li>
+</ul>
 
-<h3>on Tomcat</h3>
 
-<h3>In the Cloud</h3>
+<h2>Spring Runs Where Your Applications Run</h2>
+
+<p>Spring' portability-story is second to none. Today, the deployment targets for modern applications vary considerably and this portability has become more important than ever.</p>
+
+<h3>..on Java EE</h3>
+
+<p>If you're stuck on a  Java EE application server, don't worry! Spring features first class support with Java EE and even brings many of  the new features in the latest generations of Java EE (in this case, Java EE 7) to you before they're commonly available in a commercially supported application server. Spring supports many of the Java EE JSRs, and even the Spring team even helped shape a few of those that thare are valuable outside of an application server like the webocksets JSR (JSR 356), the batch processing JSR (JSR 352, which bares a <em>striking</em> simialarity to <a href="http://spring.io/projects/spring-batch">Spring Batch</a>!). Some JSRs, like the caching JSR (JSR 107) are already supported in Spring applications and have been for a couple of years now, even though the final JSR hasn't even shipped as part of Java EE yet! Spring 4 features great support for other Java EE 7 JSRs like the Date/Time API, JTA 1.2, JMS 2.0, JPA 2.1, Bean Validation 1.1, the new concurrency API in JSR-236, Servlet 3.1, and WebSockets (JSR 356).</p>
+
+<h3>..on Apache Tomcat</h3>
+
+<p>Happily, most developers are using lighter containers like Jetty and  (by a wide margin!) <a href="http://tomcat.apache.org">Apache Tomcat</a>. Spring runs just fine on these destinations. Apache Tomcat is the heart of Pivotal's tcServer, which is a binary-compatible version of Apache Tomcat with extra goodness for management and monitoring, among other things.</p>
+
+<p><img src="./imgs/apache-tomcat-leads-the-way.png" title="Cloud Foundry, the open-source Platform-as-a-Service from Pivotal" alt="Apache Tomcat leads the way" /></p>
+
+<h3>..in the Cloud</h3>
+
+<p><IMG src = "./imgs/cloudfoundry.png" width="200" style="margin-right: 10px; float:left"/> Spring's ability to insulate you from the underlying platform makes it an ideal choice for the cloud, where deployment destinations vary and runtime services vary wildly. Spring runs in all cloud environments. It works on the usual suspects (e.g., Amazon Web Services) as well as more exotic destinations like Google App Engine where full on Java EE applications can't hope to run because of Google's JDK whitelist.</p>
+
+<p>Spring works well in other PaaS environments like Heroku, OpenShift, and - in particular - it enjoys a special place in the sun on <a href="http://cloudfoundry.org">Cloud Foundry</a>, the open-source Platform-as-a-service from Pivotal. Here, for example, is a Spring configuraton class that uses a feature called <em>profiles</em>, which let the developer define environment-specific configurations. This configuratoin class is meant to run on Cloud Foundry, and uses the <code>CloudFactory</code> API to dynamically look up the local <code>javax.sql.DataSource</code> instance. It's easy to imagine defining other such configuration classes for <code>dev</code>, <code>production</code>, legacy application servers like GlassFish, and more as required to suit your application's use cases!</p>
+
+<pre><code>@Configuration
+@Profile("cloud")
+public class CloudConfig {
+
+    @Bean public Cloud cloud()  throws CloudException {
+            CloudFactory cloudFactory = new CloudFactory();
+            return cloudFactory.getCloud();
+    }
+    
+    @Bean public DataSource dataSource() {
+            return cloud().getSingletonServiceConnector(DataSource.class, null);   
+    }
+}
+</code></pre>
+
+<h2>Not the End</h2>
+
+<p>Spring continues to lead the charge, empowering modern developers to solve today's problems like no other platform can. If you have questions, let's carry this discu
+<strong><strong><strong> TODO TODO </strong></strong></strong></p>
 </body>
 </html>
