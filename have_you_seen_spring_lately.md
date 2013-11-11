@@ -52,7 +52,7 @@ This is a Groovy-language Spring MVC REST controller that simply returns an obje
 #### Bootstrapping Your Development with our open-source and Eclipse-Based Spring Tool Suite and Groovy Tool Suite
 If you're a Java developer working in Eclipse then check out our open-source Eclipse-based [Spring Tool Suite](http://spring.io/tools/sts) and [Groovy/Grails Tool Suite](http://spring.io/tools/ggts) distributions. They layer on top of an existing instance of the latest-and-greatest Eclipse distribution or you can download them as separate IDEs. I think this last approach is the far more productive path, and, if you want anything else, just add it!
 
-<iframe width="560"  src="//www.youtube.com/embed/pXJvJIdBRn0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315"  src="//www.youtube.com/embed/pXJvJIdBRn0" frameborder="0" allowfullscreen></iframe>
 <!-- <iframe width="420" height="315" src="http://www.youtube.com/embed/LSNiI9zSn6M" frameborder="0" allowfullscreen></iframe> -->
 
 ## A Richer Web with Spring
