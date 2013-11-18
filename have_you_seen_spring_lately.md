@@ -331,6 +331,7 @@ To see WebSockets in action, check out the following video.
 
 * Rossen Stoyanchev has an amazing [websocket example application here](https://github.com/rstoyanchev/spring-websocket-portfolio). The video above demonstrates this code in action.
 * Rossen also put together a fantastic webinar introducing [websocket support and using that very same sample application as a demo](http://spring.io/blog/2013/10/23/webinar-replay-building-websocket-browser-applications-with-spring).
+* The Spring Boot starter `pom.xml` can be used to bootstrap websocket-based development with Spring. The [Spring Boot websocket sample](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-websocket) is a huge help in demonstrating how to do websocket development with Spring Boot.
 
 ### Secure, Connected Web Applications and Web Services with Spring
 
