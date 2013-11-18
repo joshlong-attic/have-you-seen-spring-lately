@@ -1,4 +1,4 @@
-#  Have You Seen Spring Lately?  
+# Have You Seen Spring Lately?  
 
 <IMG src = "./imgs/spring-io-logo.png" width="200" style="margin-right: 10px; float:left"/>  2013 has been a banner year for Spring! In April, we on the Spring team joined the [Pivotal initiative](http://gopivotal.com), and we're not alone! The new company is composed of Spring (including the [Grails](http://grails.org), [RabbitMQ](http://rabbitmq.com), [Tomcat](http://tomcat.apache.org), [Redis](http://redis.io), and [GemFire](http://gemfire.com) teams), [Cloud Foundry](http://cloudfoundry.org) (the open source [PaaS (platform-as-a-service)](http://wikipedia.org/wiki/platform-as-a-service), and [Greenplum](http://gopivotal.com/greenplum) (who have leadership in smart data warehousing and Hadoop, among other things). 
 
@@ -8,15 +8,26 @@ In this article we'll look at the latest and greatest Spring projects and their 
 
 ![the Spring IO platform](./imgs/spring-io-platform.jpg "the Spring IO platform")
 
-While you can pick up any library and use it _a la carte_, we hope that developers will enter the platform through one of the three channels at the _IO Execution_ tier: 
+While you can pick up any library and use it _a la carte_, we hope that developers will enter the platform through one of the three technologies at the _IO Execution_ tier. The _IO Execution_ tier describes anything that manages things that ultimately manifest as proceses on the operating system. The _IO Execution_ tier currently includes: 
 
 * [**Spring XD**](http://spring.io/projects/spring-xd) for big-data, batch and integration work 
 * [**Spring Boot**](http://projects.spring.io/spring-boot/) for convention-over-configuration-centric and singularity-of-focus-centric Spring application development.
 * [**Grails**](http://grails.org/) for rapid web application development with the Groovy language.
 
-From there, a developer may expect to use 	any of the Spring modules in the _IO Foundation_ tier supporting integration, batch processing, big data, and web applications, all of which work with our data-access and processing APIs and enjoy the support of cross-cutting technologies like the core dependency injection container, the reactive [_Reactor_](http://githubggffh.com/reactor) framework, and  the [Spring Security](http://spring.io/projects/spring-security) framework.
+From there, a developer may expect to use 	any of the Spring modules in the _IO Foundation_ tier supporting integration, batch processing, big data, and web applications, all of which work with our data-access and processing APIs and enjoy the support of cross-cutting technologies like the core dependency injection container, the reactive [_Reactor_](http://githubggffh.com/reactor) framework, and  the [Spring Security](http://spring.io/projects/spring-security) framework. 
 
-## A New Beginning for Spring and For You
+Let's look at some of the things that Spring makes easy. 
+
+## Table of Contents
+ 
+* [A New Beginning for Spring and For You](#beginning)
+* [Dealing with Data](#data) 
+* [A Richer Web with Spring](#web)
+* [Spring Runs Where Your Applications Run](#portable)
+* [This is Just the Beginning…](#staytuned)
+
+
+## <A name="beginning"></a> A New Beginning for Spring and For You
 
 ### Spring Has a New Home!
 Spring's new home on the web is [http://spring.io](http://spring.io). Spring.io is your one-stop shop for [documentation](https://spring.io/docs), the [forums](http://forum.spring.io/), the [blog](https://spring.io/blog), detailed [project information](https://spring.io/projects), and new [getting-started guides](http://spring.io/guides) and tutorials. We put up a lot of great, technical content on the blog every week. Every tuesday, I put up a post called _This Week in Spring_ which aggregates great blogs, tutorials, and videos from our team and from the Spring community.
@@ -54,7 +65,117 @@ If you're a Java developer working in Eclipse then check out our open-source Ecl
 
 <iframe width="560" height="315"  src="http://www.youtube.com/embed/pXJvJIdBRn0" frameborder="0" allowfullscreen></iframe>
 
-## A Richer Web with Spring
+## <A name="data"></a> Dealing with Data
+Spring provides a rich set of technologies to work with data.
+
+### Traditional RDMBSes
+The core Spring framework has great support for JDBC, and JDBC-based ORM access. It includes a transaction API that insulates you from the (incompatible) nuances typical of transactional resources like SQL databases, JMS and AMQP message brokers, and JPA / Hibernate ORM clients. Spring's support here is already legendary, and with Java 8's developer previews already available,  becomes even _more_ expressive! Below us an example of using Java 8's lambda expressions with Spring's `JdbcTemplate`, a workhorse for JDBC-driven data access:
+
+```
+   User user = jdbcTemplate.queryForObject( 
+      "select * from USERS where ID = ?" ,  
+       (resultSet, rowNum ) -> new User( resultSet.getLong("ID"), resultSet.getString("EMAIL")),
+       423L ) ;
+```
+
+### NoSQL, NewSQL, and NOSQL with Spring Data 
+
+The [Spring Data](http://Spring.io/projects/spring-data) projects embrace the new breed of so-called [NoSQL](http://wikipedia.org/wiki/NoSQL), NewSQL, or NOSQL (not-only-SQL) solutions. Spring Data is not one API to rule them all, instead it is an umbrella project with specific APIs for popular "database" technologies like [Redis](http://projects.spring.io/spring-data-redis/), [MongoDB](http://projects.spring.io/spring-data-mongodb/), and [Neo4J](http://projects.spring.io/spring-data-neo4j/). In addition, there are many third party bindings for projects like ElasticSearch, SOLR, CouchDB, and Riak.
+
+One concept common to many Spring Data modules, including the [Spring Data JPA](http://spring.io/projects/spring-data-jpa) module, is the notion of a _repository_. A Spring Data repository, named for the _repository_ design pattern, is an interface that Spring Data implements at runtime using convention-over-configuration to dynamically build the implementation, typically by interacting with some backend resource. Here's a Spring Data JPA repository that I can inject and use anywhere in my code. I've added in comments a rough example of the query that each method generates.
+
+```
+@RestResource (path = "users", rel = "users")  // automatically exposes a REST endpoint at /users/*
+public interface UserRepository extends PagingAndSortingRepository<User, Long> {
+
+	// select * from users where username = ?
+	User findByUsername(@Param("username") String username); 
+
+	// select * from users where firstName =? or lastName = ? or username = ?
+	List<User> findUsersByFirstNameOrLastNameOrUsername(
+  	  @Param("firstName") String firstName,
+  	  @Param("lastName") String lastName,
+  	  @Param("username") String username);
+
+}
+````
+
+In this case I've used Spring Data JPA's repository support, but I could've just as easily used Spring Data MongoDB's, Spring Data Neo4j's or Spring Data GemFire's and those query methods would've instead mapped to those backend databases, instead of SQL. Note, also, the `@RestResource` annotation provided by Spring Data REST. This annotation transparently maps the repository to a RESTful service endpoint and works in conjunction with Spring MVC. That's not to shabby for a single Java interface!
+
+
+### Surviving the Big-Data Wild, Wild West with Spring for Apache Hadoop
+Today's Hadoop ecosystem represents a fantastic new opportunity with some very familiar problems. Think back to 2003 - Spring was new on the scene - and being the developer that managed to Hibernate, Quartz and Struts working in the same web application ten years ago was the office rock-star! These projects were developed in isolation by individual open-source projects absent each other's use-cases and standards: they did not share common runtime concepts and did not share common API concepts like transaction management. In today's world, using Hibernate and Struts (or Spring MVC) and Quartz in the same application is a snap thanks to Spring. In the Hadoop ecosystem today, we find ourselves with the same sort of integration challenges and here again Spring offers a solution. [Spring for Apache Hadoop](http://spring.io/projects/spring-hadoop) makes working with Hadoop-ecosystem technologies like HBase, Hive, Pig, Cascading, and YARN from within standard Spring as easy as possible. In addition, Spring for Apache Hadoop can rely on platform niceties like property-placeholder resolution to ease configuration.
+
+Spring for Apache Hadoop is known to work with the following Hadoop distributions:
+
+* Apache Hadoop 1.2.1 stable
+* Apache Hadoop 2.0.6-alpha
+* Apache Hadoop 2.1.0-beta
+* Cloudera CDH4
+* Hortonworks HDP 1.3
+* **[Pivotal HD 1.0](http://www.gopivotal.com/pivotal-products/data/pivotal-hd)** - this is the [@GoPivotal](http://twitter.com/gopivotal) Hadoop distribution. It includes the world's first true SQL processing for enterprise-ready Hadoop, builds on top of Hadoop 2, is supported by EMC's global, 24x7 support infrastructure, and is available as a seperate, easy-to-use [single-node virtual machine for development](http://www.gopivotal.com/pivotal-products/data/pivot* al-hd#4).
+
+![the Spring for Apache Hadoop ecosystem](./imgs/spring-for-hadoop-2.png "the Spring for Apache Hadoop ecosystem")
+
+To learn more about Spring for Apache Hadoop, check out these resources:
+
+* the [Spring for Apache Hadoop samples](https://github.com/spring-projects/spring-hadoop-samples) demonstrate common concepts like how to use Cascading, YARN, and basic Map-Reduce with Spring for Hadoop.
+* check out this [Spring for Hadoop webinar](http://www.youtube.com/watch?v=gxWXEBW0nMM) 
+
+## Online and Batch Processing of Data
+Spring clearly knows how to talk to the data sources you're probably most interested in talking to. The next question, of course, is how to process data from those datastores. Spring integration and data-processing solutions are rich.
+
+### Spring Integration to Build Messaging-Driven Architectures
+[Spring Integration](http://spring.io/projects/spring-integration) is an integration framework in the style of the patterns in Gregor Hohpe and Bobby Woolf's epic tome, _Enterprise Integration Patterns_. In the world of Enterprise Integration, systems are connected through _channels_ (message queueus). Messages flow from one component to another which can transform, enrich, split, aggregate and route messages. Spring Integration offers a set of adapters - components that adapt messages from external systems into standard Spring Integration messages. In this way, Spring Integration applications can _integrate_ data and services from different systems and protocols like FTPS, XMPP, JDBC, SFTP, Hadoop's HDFS, Twitter, Splunk, JDBC, JMS, AMQP, Twitter, and GemFire continuous-queries.
+
+![the Spring Integration Pipes 'n Filters model](./imgs/message-channels.png "the Spring Integration Pipes 'n Filters model")
+
+
+### Batch Processing with Spring Batch to Avoid Idle Computational Resources
+Spring Integration is all about reacting to events in realtime, about being able to integrate with data and services from disparate systems. Spring Batch is all about the safe processing of large amounts of sequential data like large datasets in, for example, a flat file, a JDBC database, or a large XML document. Its design is also largely intact in the [Batch JSR](http://jcp.org/en/jsr/detail?id=352), where we contributed a lot of leadership to make it the best possible standard for the community. As a specification, JSR 352 is necessarily vague on some poionts. In particular, it does not prescribe any item readers and writers out of the box. Users going to the JSR via the Spring Batch implementation will appreciate the rich set of readers and writers unique to Spring Batch.
+
+Spring Batch `job`s contain a sequence of one or more `step`s. Each `step` may optionally read (through its provided `ItemReader`), optionally process (through a provided `ItemProcessor`), and  optionally write (through a provided `ItemWriter`).
+
+![the Spring Integration Pipes 'n Filters model](./imgs/anatomy-of-batch-job.png "the anatomy of a Batch Job")
+
+Here's an example of using Spring Integration to respond to new file system events ("there's a new file in a monitored folder") and then  process the file using Spring Batch. The code is available in the resources below.
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/wo2gs_1QTXs" frameborder="0" allowfullscreen></iframe>
+
+
+For more resources on using Spring Batch and Spring Integration:   
+
+* check out the  [_gettting started_ guide showing how to do batch processing with Spring Batch](http://spring.io/guides/gs/batch-processing/).
+* check out the  [_getting started_ guide showing how to do data and service integration with Spring Integration](http://spring.io/guides/gs/integration/)
+* the code for the demo above is available on my GitHub account as part of a larger codebase, [_A Walking Tour of All of Springdom_](https://github.com/joshlong/a-walking-tour-of-all-of-springdom).
+
+### Surfing the Tidal Data Deluge with Spring XD
+
+Today's applications are real-time, and work with lots of data. It's one thing to setup a Hadoop cluster to handle batch processing and warehousing, but many developers today are struggling with a different problem:  how do I absorb the load of data fast enough to get it into Hadoop in the first place? This challenge is called _stream processing_ or _data integration_. [Spring XD](http://spring.io/projects/spring-xd) puts these types of problems squarely in its cross hairs. Spring XD is built on top of Spring Integration and Spring Batch, so benefits from the rich set of adapters and the event-driven processing paradigm that Spring Integration brings with it, and it benefits from the data-processing- and job-orchestration smarts that Spring Batch brings with it. 
+
+In Spring XD, data comes in from a _source_ and may then   be procesed, analysed and ultimately written to a _sink_. A given path through which data transits in Spring XD is called a _stream_.  Spring XD is a turnkey runtime. Components are defined in terms of Spring Integration flows and Spring Batch jobs and given IDs, and then managed by Spring XD. Spring XD components are orchestrated (and referenced by their ID) using a DSL that looks (uncannily!) like what   Unix `bash` command-line incantation piping `stdin` and `stdout` from one singly-focused command line utility to another. This is no accident: Spring XD embraces the _pipes and filters_ paradigm. The other benefit of this orchestration DSL is that it's high-level enough that a business analyst or higher-level operator might use it. Spring XD can transparently scale out to accomodate load, distributing processing across multiple nodes.  
+
+
+![Spring XD is a central hub for integration and data processing](./imgs/spring-xd.png "Spring XD applications work with data from inbound  sources like SFTP, Twitter, and Splunk, process them, and then write them out to sinks like FTPS, SFTP, and Splunk")
+
+
+
+An example of defining a stream is shown  below: messages are expected from the `time` component and are passed to the `log` component, whatever these two components (`time`, and `log`) are and do is up to you. This is of course a very simple example. You can script very complex workflows in this way and change flows on the fly all from the Spring XD operator `shell`.
+
+``` 
+xd:> stream create --definition " time | log  " --name ticktock 
+```
+In the video below, I demonstrate sending orders through a Spring XD HTTP endpoint and then having that data transit through a machine learning library (Madlib) hosted in the [Pivotal HD](http://www.gopivotal.com/pivotal-products/data/pivotal-hd) single-node virtual machine. Pivotal HD is Pivotal's Hadoop distribution. The Madlib engine has a model, pre-trained with knowledge of certain types of fraudulent orders. It uses that model and [_linear regression_](http://en.wikipedia.org/wiki/Linear_regression)  to evaluate whether incoming orders are fraudulent, live. The results are reflected in the browser which updates every 5 seconds and highlights regions with fraudulent orders.
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/BgehjMBi8oQ" frameborder="0" allowfullscreen></iframe>
+
+For more resources on using Spring XD:
+
+* check out the [_getting started_ guide showing how to use Spring XD](http://spring.io/guides/gs/spring-xd-osx/) 
+* check out the [webinar, _Tackling Big Data Challenges with Spring_](http://youtube.com/SpringSourceDev)  
+
+
+## <a name="web"></a> A Richer Web with Spring
 ### Build Web Applications and Web Services with Spring
 Today's web applications are as often as not REST-powered backends with rich JavaScript / HTML5 or native mobile front ends. [REST](http://wikipedia.org/wiki/Representational_state_transfer) is not a standard but a set of principles designed to promote the use and consumption of services that fully exploit, as opposed to merely transit through, HTTP.
 
@@ -214,7 +335,7 @@ To see WebSockets in action, check out the following video.
 ### Secure, Connected Web Applications and Web Services with Spring
 
 ####  Security
-[Spring Security](http://spring.io/projects/spring-security) integrates well with enterprise authentication and authorization backends like [SAML](http://projects.spring.io/spring-security-saml), [Kerberos](http://projects.spring.io/spring-security-kerberos), `pam`, and LDAP. Spring Security provides best-of-breed, open web-ready, and enterprise-ready, security for modern applications. Spring Security supports - for example - acting as both an [OAuth client and securing a service with OAuth](http://spring.io/projects/spring-security-oauth) and provides protection for modern web applications  including [comprehensive CSRF (Cross Site Request Forgery]) protection](http://spring.io/blog/2013/08/21/spring-security-3-2-0-rc1-highlights-csrf-protection) and session-fixation protection.
+[Spring Security](http://spring.io/projects/spring-security) integrates well with enterprise authentication and authorization backends like [SAML](http://projects.spring.io/spring-security-saml), [Kerberos](http://projects.spring.io/spring-security-kerberos), `pam`, and LDAP. Spring Security provides best-of-breed, open web-ready, and enterprise-ready, security for modern applications. Spring Security supports - for example - acting as both an [OAuth client and securing a service with OAuth](http://spring.io/projects/spring-security-oauth) and provides protection for modern web applications  including [comprehensive CSRF ([Cross Site Request Forgery](http://spring.io/blog/2013/08/21/spring-security-3-2-0-rc1-highlights-csrf-protection)) protection   and session-fixation protection.
 
 Here are some resources to help you get started with Spring Security:
 
@@ -269,116 +390,9 @@ Here's an example of working with two applications, one an iOS Objective-C clien
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/fgNL_g3K7FI" frameborder="0" allowfullscreen></iframe>
 
-## Dealing with Data
-Spring provides a rich set of technologies to work with data.
-
-### Traditional RDMBSes
-The core Spring framework has great support for JDBC, and JDBC-based ORM access. It includes a transaction API that insulates you from the (incompatible) nuances typical of transactional resources like SQL databases, JMS and AMQP message brokers, and JPA / Hibernate ORM clients. Spring's support here is already legendary, and with Java 8's developer previews already available,  becomes even _more_ expressive! Below us an example of using Java 8's lambda expressions with Spring's `JdbcTemplate`, a workhorse for JDBC-driven data access:
-
-```
-   User user = jdbcTemplate.queryForObject( 
-      "select * from USERS where ID = ?" ,  
-       (resultSet, rowNum ) -> new User( resultSet.getLong("ID"), resultSet.getString("EMAIL")),
-       423L ) ;
-```
-
-### NoSQL, NewSQL, and NOSQL with Spring Data 
-
-The [Spring Data](http://Spring.io/projects/spring-data) projects embrace the new breed of so-called [NoSQL](http://wikipedia.org/wiki/NoSQL), NewSQL, or NOSQL (not-only-SQL) solutions. Spring Data is not one API to rule them all, instead it is an umbrella project with specific APIs for popular "database" technologies like [Redis](http://projects.spring.io/spring-data-redis/), [MongoDB](http://projects.spring.io/spring-data-mongodb/), and [Neo4J](http://projects.spring.io/spring-data-neo4j/). In addition, there are many third party bindings for projects like ElasticSearch, SOLR, CouchDB, and Riak.
-
-One concept common to many Spring Data modules, including the [Spring Data JPA](http://spring.io/projects/spring-data-jpa) module, is the notion of a _repository_. A Spring Data repository, named for the _repository_ design pattern, is an interface that Spring Data implements at runtime using convention-over-configuration to dynamically build the implementation, typically by interacting with some backend resource. Here's a Spring Data JPA repository that I can inject and use anywhere in my code. I've added in comments a rough example of the query that each method generates.
-
-```
-@RestResource (path = "users", rel = "users")  // automatically exposes a REST endpoint at /users/*
-public interface UserRepository extends PagingAndSortingRepository<User, Long> {
-
-	// select * from users where username = ?
-	User findByUsername(@Param("username") String username); 
-
-	// select * from users where firstName =? or lastName = ? or username = ?
-	List<User> findUsersByFirstNameOrLastNameOrUsername(
-  	  @Param("firstName") String firstName,
-  	  @Param("lastName") String lastName,
-  	  @Param("username") String username);
-
-}
-````
-
-In this case I've used Spring Data JPA's repository support, but I could've just as easily used Spring Data MongoDB's, Spring Data Neo4j's or Spring Data GemFire's and those query methods would've instead mapped to those backend databases, instead of SQL. Note, also, the `@RestResource` annotation provided by Spring Data REST. This annotation transparently maps the repository to a RESTful service endpoint and works in conjunction with Spring MVC. That's not to shabby for a single Java interface!
 
 
-### Surviving the Big-Data Wild, Wild West with Spring for Apache Hadoop
-Today's Hadoop ecosystem represents a fantastic new opportunity with some very familiar problems. Think back to 2003 - Spring was new on the scene - and being the developer that managed to Hibernate, Quartz and Struts working in the same web application ten years ago was the office rock-star! These projects were developed in isolation by individual open-source projects absent each other's use-cases and standards: they did not share common runtime concepts and did not share common API concepts like transaction management. In today's world, using Hibernate and Struts (or Spring MVC) and Quartz in the same application is a snap thanks to Spring. In the Hadoop ecosystem today, we find ourselves with the same sort of integration challenges and here again Spring offers a solution. [Spring for Apache Hadoop](http://spring.io/projects/spring-hadoop) makes working with Hadoop-ecosystem technologies like HBase, Hive, Pig, Cascading, and YARN from within standard Spring as easy as possible. In addition, Spring for Apache Hadoop can rely on platform niceties like property-placeholder resolution to ease configuration.
-
-Spring for Apache Hadoop is known to work with the following Hadoop distributions:
-
-* Apache Hadoop 1.2.1 stable
-* Apache Hadoop 2.0.6-alpha
-* Apache Hadoop 2.1.0-beta
-* Cloudera CDH4
-* Hortonworks HDP 1.3
-* **[Pivotal HD 1.0](http://www.gopivotal.com/pivotal-products/data/pivotal-hd)** - this is the [@GoPivotal](http://twitter.com/gopivotal) Hadoop distribution. It includes the world's first true SQL processing for enterprise-ready Hadoop, builds on top of Hadoop 2, is supported by EMC's global, 24x7 support infrastructure, and is available as a seperate, easy-to-use [single-node virtual machine for development](http://www.gopivotal.com/pivotal-products/data/pivot* al-hd#4).
-
-![the Spring for Apache Hadoop ecosystem](./imgs/spring-for-hadoop-2.png "the Spring for Apache Hadoop ecosystem")
-
-To learn more about Spring for Apache Hadoop, check out these resources:
-
-* the [Spring for Apache Hadoop samples](https://github.com/spring-projects/spring-hadoop-samples) demonstrate common concepts like how to use Cascading, YARN, and basic Map-Reduce with Spring for Hadoop.
-* check out this [Spring for Hadoop webinar](http://www.youtube.com/watch?v=gxWXEBW0nMM) 
-
-## Online and Batch Processing of Data
-Spring clearly knows how to talk to the data sources you're probably most interested in talking to. The next question, of course, is how to process data from those datastores. Spring integration and data-processing solutions are rich.
-
-### Spring Integration to Build Messaging-Driven Architectures
-[Spring Integration](http://spring.io/projects/spring-integration) is an integration framework in the style of the patterns in Gregor Hohpe and Bobby Woolf's epic tome, _Enterprise Integration Patterns_. In the world of Enterprise Integration, systems are connected through _channels_ (message queueus). Messages flow from one component to another which can transform, enrich, split, aggregate and route messages. Spring Integration offers a set of adapters - components that adapt messages from external systems into standard Spring Integration messages. In this way, Spring Integration applications can _integrate_ data and services from different systems and protocols like FTPS, XMPP, JDBC, SFTP, Hadoop's HDFS, Twitter, Splunk, JDBC, JMS, AMQP, Twitter, and GemFire continuous-queries.
-
-![the Spring Integration Pipes 'n Filters model](./imgs/message-channels.png "the Spring Integration Pipes 'n Filters model")
-
-
-### Batch Processing with Spring Batch to Avoid Idle Computational Resources
-Spring Integration is all about reacting to events in realtime, about being able to integrate with data and services from disparate systems. Spring Batch is all about the safe processing of large amounts of sequential data like large datasets in, for example, a flat file, a JDBC database, or a large XML document. Its design is also largely intact in the [Batch JSR](http://jcp.org/en/jsr/detail?id=352), where we contributed a lot of leadership to make it the best possible standard for the community. As a specification, JSR 352 is necessarily vague on some poionts. In particular, it does not prescribe any item readers and writers out of the box. Users going to the JSR via the Spring Batch implementation will appreciate the rich set of readers and writers unique to Spring Batch.
-
-Spring Batch `job`s contain a sequence of one or more `step`s. Each `step` may optionally read (through its provided `ItemReader`), optionally process (through a provided `ItemProcessor`), and  optionally write (through a provided `ItemWriter`).
-
-![the Spring Integration Pipes 'n Filters model](./imgs/anatomy-of-batch-job.png "the anatomy of a Batch Job")
-
-Here's an example of using Spring Integration to respond to new file system events ("there's a new file in a monitored folder") and then  process the file using Spring Batch. The code is available in the resources below.
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/wo2gs_1QTXs" frameborder="0" allowfullscreen></iframe>
-
-
-For more resources on using Spring Batch and Spring Integration:   
-
-* check out the  [_gettting started_ guide showing how to do batch processing with Spring Batch](http://spring.io/guides/gs/batch-processing/).
-* check out the  [_getting started_ guide showing how to do data and service integration with Spring Integration](http://spring.io/guides/gs/integration/)
-* the code for the demo above is available on my GitHub account as part of a larger codebase, [_A Walking Tour of All of Springdom_](https://github.com/joshlong/a-walking-tour-of-all-of-springdom).
-
-### Surfing the Tidal Data Deluge with Spring XD
-
-Today's applications are real-time, and work with lots of data. It's one thing to setup a Hadoop cluster to handle batch processing and warehousing, but many developers today are struggling with a different problem:  how do I absorb the load of data fast enough to get it into Hadoop in the first place? This challenge is called _stream processing_ or _data integration_. [Spring XD](http://spring.io/projects/spring-xd) puts these types of problems squarely in its cross hairs. Spring XD is built on top of Spring Integration and Spring Batch, so benefits from the rich set of adapters and the event-driven processing paradigm that Spring Integration brings with it, and it benefits from the data-processing- and job-orchestration smarts that Spring Batch brings with it. 
-
-In Spring XD, data comes in from a _source_ and may then   be procesed, analysed and ultimately written to a _sink_. A given path through which data transits in Spring XD is called a _stream_.  Spring XD is a turnkey runtime. Components are defined in terms of Spring Integration flows and Spring Batch jobs and given IDs, and then managed by Spring XD. Spring XD components are orchestrated (and referenced by their ID) using a DSL that looks (uncannily!) like what   Unix `bash` command-line incantation piping `stdin` and `stdout` from one singly-focused command line utility to another. This is no accident: Spring XD embraces the _pipes and filters_ paradigm. The other benefit of this orchestration DSL is that it's high-level enough that a business analyst or higher-level operator might use it. Spring XD can transparently scale out to accomodate load, distributing processing across multiple nodes.  
-
-
-![Spring XD is a central hub for integration and data processing](./imgs/spring-xd.png "Spring XD applications work with data from inbound  sources like SFTP, Twitter, and Splunk, process them, and then write them out to sinks like FTPS, SFTP, and Splunk")
-
-
-
-An example of defining a stream is shown  below: messages are expected from the `time` component and are passed to the `log` component, whatever these two components (`time`, and `log`) are and do is up to you. This is of course a very simple example. You can script very complex workflows in this way and change flows on the fly all from the Spring XD operator `shell`.
-
-``` 
-xd:> stream create --definition " time | log  " --name ticktock 
-```
-In the video below, I demonstrate sending orders through a Spring XD HTTP endpoint and then having that data transit through a machine learning library (Madlib) hosted in the [Pivotal HD](http://www.gopivotal.com/pivotal-products/data/pivotal-hd) single-node virtual machine. Pivotal HD is Pivotal's Hadoop distribution. The Madlib engine has a model, pre-trained with knowledge of certain types of fraudulent orders. It uses that model and [_linear regression_](http://en.wikipedia.org/wiki/Linear_regression)  to evaluate whether incoming orders are fraudulent, live. The results are reflected in the browser which updates every 5 seconds and highlights regions with fraudulent orders.
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/BgehjMBi8oQ" frameborder="0" allowfullscreen></iframe>
-
-For more resources on using Spring XD:
-
-* check out the [_getting started_ guide showing how to use Spring XD](http://spring.io/guides/gs/spring-xd-osx/) 
-* check out the [webinar, _Tackling Big Data Challenges with Spring_](http://youtube.com/SpringSourceDev)  
-
-## Spring Runs Where Your Applications Run 
+## <a NAME="portable"></a> Spring Runs Where Your Applications Run 
 Spring' portability-story is second to none. Today, the deployment targets for modern applications vary considerably and this portability has become more important than ever. 
 
 ### ..on Java EE 
@@ -399,7 +413,8 @@ Spring works well in other PaaS environments like Heroku, OpenShift, and - in pa
 @Configuration@Profile("cloud")public class CloudConfig {    @Bean public Cloud cloud()  throws CloudException {            CloudFactory cloudFactory = new CloudFactory();            return cloudFactory.getCloud();    }        @Bean public DataSource dataSource() {            return cloud().getSingletonServiceConnector(DataSource.class, null);       }}```
 
 
-## This is Just the Beginning… 
+
+## <A name="staytuned"></a> This is Just the Beginning… 
 We've taken a look at the rich Spring IO platform and - I hope - looked at enough of the various technologies that you feel like you can take the next steps.
 
 [Spring](http://spring.io) continues to lead the charge, empowering modern developers "to move at the speed (and scale) of business." It's growing better and better and - as part of [Pivotal](http://gopivotal.com) - it's happening even faster. The [community is a huge, and most important, part of that](http://github.com/Spring-projects). My name is [Josh Long](http://joshlong.com), I'm the Spring Developer Advocate, and I'd love to continue the discussion with you online. Don't hesitate to reach [me (@starbuxman)](http://twitter.com/starbuxman) or the rest of the [Spring team (@SpringCentral)](http://twitter.com/SpringCentral) on Twitter. We're always happy to hear from you, and help wherever possible. 
